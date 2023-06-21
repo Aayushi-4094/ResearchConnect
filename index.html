@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <form autocomplete="off" method="post" name="google-sheet">
+           <h3><center>REGISTRATION</center></h3> 
+           <input type="text" name="Name" placeholder="Enter your Fullname">
+            <input type="text" name="Email" placeholder="Enter your Email">
+
+            <select name="Options">
+                <option value="Not Selected">Select a topic</option>
+                <option value = "Science" >Science</option>
+                <option value = "Law">Law</option>
+                <option value = "Business">Business</option>
+                <option value = "Finance">Finance</option>
+                
+            </select>
+            
+
+            
+            <button type="submit" name="submit">SUBMIT</button>
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzbqfIvkQxCC4j_gUosJwXHM9ewgBcY7Lf2kTU4Nr6znf9dsS-NXc9Az62rZ-encVKo/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for registering!"))
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+
+
+</body>
+</html>
