@@ -13,7 +13,7 @@
 <body>
 
     <div class="container">
-        <form autocomplete="off" method="post" name="google-sheet">
+        <form autocomplete="off" method="post" name="google-sheet" >
            <h3><center>REGISTRATION</center></h3> 
            <input type="text" name="Name" placeholder="Enter your Fullname">
             <input type="text" name="Email" placeholder="Enter your Email">
@@ -29,7 +29,7 @@
             
 
             
-            <button type="submit" name="submit">SUBMIT</button>
+            <button type="submit" name="submit" onclick="sendemail()">SUBMIT</button>
         </form>
 
     </div>
@@ -47,6 +47,27 @@
             .then(response => alert("Thanks for registering!"))
             .catch(error => console.error('Error!', error.message))
         })
+    </script>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+        function sendemail(){
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let options = document.getElementById("options").value;
+
+            Email.send({
+            Host : "smtp.elasticemail.com",
+            Username : "hackshark51@gmail.com",
+            Password : "1D53CC2BE57619E3301F491D84DBC9DDDB88",
+            To : "aayushiagarwal4094@gmail.com",
+            From : "hackshark51@gmail.com",
+            Subject : "Mail from IEEE Xplore based on your recommendation",
+            Body : "The research paper based on your recommedation is available on IEEE Xplore."
+        }).then(
+        message => alert(message)
+        );
+    }
+
     </script>
 
 
